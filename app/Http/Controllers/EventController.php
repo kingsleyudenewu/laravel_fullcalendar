@@ -27,8 +27,8 @@ class EventController extends Controller
                     new \DateTime($value->end_date .'+1 day'),
                     null,
                     [
-                        'color' => '#ff0000'
-//                        'url' => 'http://full-calendar.io',
+                        'color' => '#ff0000',
+                        'url' => 'http://127.0.0.1:8000/events/'.$value->id
                     ]
                 );
             }
@@ -36,6 +36,15 @@ class EventController extends Controller
 
         $calendar = Calendar::addEvents($allEvents);
         return view('calendar', compact('calendar'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Event $event){
+        return view('edit', compact('event'));
     }
 
     /**
