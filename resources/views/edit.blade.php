@@ -28,6 +28,13 @@
                         {!! $event->title !!} Appointment
                     </div>
                     <div class="card-body">
+                        <form action="/events/".{!! $event->id !!} method="post">
+                            {{ method_field('PATCH') }}
+                            {{ csrf_field() }}
+                        </form>
+
+
+
                        Title:  {!! $event->title !!} <br>
                        Start Date:  {!! $event->start_date !!} <br>
                        End Date:  {!! $event->end_date !!} <br>

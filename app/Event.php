@@ -16,4 +16,13 @@ class Event extends Model
     public function setEndtDateAttribute($value){
         $this->attributes['end_date'] = Carbon::createFromFormat('Y-m-d', $value);
     }
+
+//    public function getStartDateAttribute($value)
+//    {
+//        return Carbon::createFromFormat('d-m-Y', $value);
+//    }
+//    public function getEndDateAttribute($value)
+//    {
+//        return Carbon::createFromFormat('d-m-Y', $value);
+//    }
 }
