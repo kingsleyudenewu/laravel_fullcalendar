@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use MaddHatter\LaravelFullcalendar\Facades\Calendar;
 
@@ -38,16 +39,6 @@ class EventController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -55,30 +46,24 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'start_date'=>'required',
+            'end_date'=>'required'
+        ]);
+
+        $addCalendar = Event::create(['title'=>$request->name, 'start_date'=> Carbon::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d'), 'end_date'=>Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d')]);
+
+        if($addCalendar){
+            flash('Operation successful')->success();
+            return redirect()->route('products.index');
+        }else{
+            flash('Operation failed')->error()->important();
+            return redirect()->route('products.index');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Event  $event
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Event $event)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Event  $event
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Event $event)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.

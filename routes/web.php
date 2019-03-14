@@ -13,3 +13,4 @@
 
 
 Route::get('/', 'EventController@index');
+Route::post('/events', 'EventController@store');
