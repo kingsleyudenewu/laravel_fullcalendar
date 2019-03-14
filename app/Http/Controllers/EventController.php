@@ -52,14 +52,14 @@ class EventController extends Controller
             'end_date'=>'required'
         ]);
 
-        $addCalendar = Event::create(['title'=>$request->name, 'start_date'=> Carbon::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d'), 'end_date'=>Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d')]);
+        $addCalendar = Event::create(['title'=>$request->title, 'start_date'=> $request->start_date , 'end_date'=>$request->end_date]);
 
         if($addCalendar){
             flash('Operation successful')->success();
-            return redirect()->route('products.index');
+            return redirect()->route('index');
         }else{
             flash('Operation failed')->error()->important();
-            return redirect()->route('products.index');
+            return redirect()->route('index');
         }
     }
 

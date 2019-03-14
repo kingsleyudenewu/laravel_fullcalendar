@@ -12,5 +12,5 @@
 */
 
 
-Route::get('/', 'EventController@index');
-Route::post('/events', 'EventController@store');
+Route::get('/', 'EventController@index')->name('index');
+Route::post('/events', 'EventController@store')->name('events.store');
