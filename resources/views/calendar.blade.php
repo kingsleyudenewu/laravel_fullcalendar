@@ -29,7 +29,7 @@
 
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
@@ -38,7 +38,23 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        ...
+                                        <form action="/events" method="post">
+                                            {{ csrf_field() }}
+                                            <div class="form-group">
+                                                <label for="">Title</label>
+                                                <input type="text" class="form-control" id="title" name="title" placeholder="Enter title" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="">Start Date</label>
+                                                <input type="date" class="form-control" id="start_date" name="start_date" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="">End Date</label>
+                                                <input type="date" class="form-control" id="end_date" name="end_date" required>
+                                            </div>
+
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </form>
                                     </div>
                                     {{--<div class="modal-footer">--}}
                                         {{--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>--}}
