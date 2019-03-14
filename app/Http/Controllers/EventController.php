@@ -26,15 +26,15 @@ class EventController extends Controller
                     new \DateTime($value->end_date .'+1 day'),
                     null,
                     [
-                        'color' => '#ff0000',
-                        'url' => 'http://full-calendar.io',
+                        'color' => '#ff0000'
+//                        'url' => 'http://full-calendar.io',
                     ]
                 );
             }
         }
 
         $calendar = Calendar::addEvents($allEvents);
-        return view('calender', compact('calendar'));
+        return view('calendar', compact('calendar'));
     }
 
     /**

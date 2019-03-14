@@ -12,4 +12,4 @@
 */
 
 
-Route::get('events', 'EventController@index');
+Route::get('/', 'EventController@index');
