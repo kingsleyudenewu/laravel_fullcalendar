@@ -15,4 +15,4 @@
 Route::get('/', 'EventController@index')->name('index');
 Route::post('/events', 'EventController@store')->name('events.store');
 Route::get('/events/{event}', 'EventController@show')->name('events.show');
-Route::put('/events/{event}', 'EventController@update')->name('events.update');
+Route::patch('/events/{event}', 'EventController@update')->name('events.update');

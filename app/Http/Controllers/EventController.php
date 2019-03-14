@@ -83,7 +83,28 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'start_date'=>'required',
+            'end_date'=>'required'
+        ]);
+
+//        return $request;
+
+        $updateCalendar = Event::where('id', $event->id)->update([
+            'title'=>$request->title,
+            'start_date'=> $request->start_date,
+            'end_date'=>$request->end_date
+        ]);
+
+        if($updateCalendar){
+            flash('Operation successful')->success();
+            return redirect()->route('index');
+        }
+        else{
+            flash('Operation failed')->error()->important();
+            return redirect()->route('index');
+        }
     }
 
     /**

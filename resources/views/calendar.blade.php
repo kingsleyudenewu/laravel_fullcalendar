@@ -11,6 +11,7 @@
 
 @section('style')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker3.min.css" />
 @endsection
 
 @section('content')
@@ -51,11 +52,11 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="">Start Date</label>
-                                                <input type="date" class="form-control" id="start_date" name="start_date" required>
+                                                <input type="text" class="form-control datepicker" id="start_date" name="start_date" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="">End Date</label>
-                                                <input type="date" class="form-control" id="end_date" name="end_date" required>
+                                                <input type="text" class="form-control datepicker" id="end_date" name="end_date" required>
                                             </div>
 
                                             <button type="submit" class="btn btn-primary">Submit</button>
@@ -79,5 +80,16 @@
 @section('script')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".datepicker").datepicker({
+                format: "yyyy-mm-dd",
+                todayBtn: "linked",
+                todayHighlight: true,
+                autoclose: true
+            });
+        })
+    </script>
     {!! $calendar->script() !!}
 @endsection
